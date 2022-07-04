@@ -29,17 +29,15 @@ defmodule BackendTest.Parser do
 
   def parse(_), do: {:error, "Invalid file"}
 
-  def get_grid_size(<<max_x::binary-size(1), " ", max_y::binary-size(1)>> = grid) do
-    with {int_max_x, ""} <- Integer.parse(max_x),
+  def get_grid_size(grid) do
+    with %{"max_x" => max_x, "max_y" => max_y} <-
+           Regex.named_captures(~r/^(?<max_x>\d+)\s(?<max_y>\d+)$/, grid),
+         {int_max_x, ""} <- Integer.parse(max_x),
          {int_max_y, ""} <- Integer.parse(max_y) do
       {:ok, int_max_x, int_max_y}
     else
       _ -> {:error, "Invalid grid specification: #{grid}"}
     end
-  end
-
-  def get_grid_size(grid) do
-    {:error, "Invalid grid specification: #{grid}"}
   end
 
   def get_robots(robot_specs, robots \\ [])
