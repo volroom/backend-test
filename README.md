@@ -1,21 +1,18 @@
 # BackendTest
 
-**TODO: Add description**
-
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `backend_test` to your list of dependencies in `mix.exs`:
+Run `mix deps.get` to install dependencies, no other installation required.
 
-```elixir
-def deps do
-  [
-    {:backend_test, "~> 0.1.0"}
-  ]
-end
+## Usage
+
+I have included the two example scenarios in the priv folder, to get the outputs for any file run the following command:
+
+```sh
+mix calculate_robots <your filename>
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/backend_test>.
-
+For example:
+```sh
+mix calculate_robots priv/example_1
+```

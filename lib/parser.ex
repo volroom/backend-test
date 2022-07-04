@@ -13,7 +13,6 @@ defmodule BackendTest.Parser do
       {:ok, text} ->
         text
         |> String.split("\n", trim: true)
-        |> IO.inspect()
         |> parse()
 
       error ->
@@ -22,7 +21,7 @@ defmodule BackendTest.Parser do
   end
 
   def parse([grid_spec | rest]) do
-    with {:ok, max_x, max_y} <- get_grid_size(grid_spec) |> IO.inspect(),
+    with {:ok, max_x, max_y} <- get_grid_size(grid_spec),
          {:ok, robots} <- get_robots(rest) do
       {:ok, max_x, max_y, robots}
     end
